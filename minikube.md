@@ -58,3 +58,27 @@ if you dont give root access to docker remember use sudo before every command
  - we are going to create a pod of nginx now here we are going to get nginx image through docker by default imageof nginx and it will be are our first pod
 
 - instead of using help of kubectl command to run docker command you can just ssh into minkube and use docker command as usual as you do
+
+- sudo kubectl describe pod || pod name||
+- docker exec -it --id of conatiner-- sh
+        - use to connect the particular continer
+- now to get the ip of container that runing nginx can get by two ways one is ssh into minikube use docker exec command to get into nginx container then use hostname -i to get the ip but 
+
+- how we gonna do this with help of kubectl it is so simple 
+    - sudo kubectl get pods -o wide
+    - you gonna get ip of all pods
+
+- now we all know if hit nginx conatiner ip we gonna get default nginx page so lets hit that ip but from our terminal not going to  ssh into minikube then into conatiner nahhhhh
+
+- to do this 
+    - sudo kubectl delete pod nginx
+    - alias k="sudo kubectl"
+    - k create deployement nginx --image=nginx
+    - k describe deployment nginx
+            - after runing describe command we get selector which use to connect with port
+    - k describe pod --name of the pod---
+        - you get name of pod by k get pods
+    - k scale deployment nginx --replicas=5
+        - it will create 5 replica of nginx basically scale up the nginx 
+    - k scale deployment nginx --replicas=3
+        - it will scale down to 3
