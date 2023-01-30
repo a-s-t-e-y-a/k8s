@@ -11,7 +11,13 @@ if you dont give root access to docker remember use sudo before every command
 
     there is another docker container running inside the k8s cluster
 
+- sudo kubectl get pods
+ to check all the availbale pods in minikube
 
+ <!-- 
+ 
+ 
+  -->
 
 
 
@@ -40,3 +46,15 @@ if you dont give root access to docker remember use sudo before every command
  - kubectl cluster-info {give you cluster info}
 
  - sudo kubectl get nodes {give you node runing inside minikube by default only one node run on the minikube}**
+
+- now kubectl get pods only show pods availbale inside default namespaces are there more namespaces yes there are more namespacees to check those you need 
+    - sudo kubectl get namespaces
+        - after that you get default , kube-node-lease , kube-public , kube-system namespaces and inside default namespace you get pods that we are going to create
+- sudo kubectl get pods --namespace=kube-system
+
+    - to access particular namespace
+
+- sudo kubectl run nginx --image=nginx 
+ - we are going to create a pod of nginx now here we are going to get nginx image through docker by default imageof nginx and it will be are our first pod
+
+- instead of using help of kubectl command to run docker command you can just ssh into minkube and use docker command as usual as you do
